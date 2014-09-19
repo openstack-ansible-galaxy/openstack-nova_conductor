@@ -1,0 +1,4 @@
+---
+
+- name: Remove useless SQLite db file
+  file: path=/var/lib/nova/nova.sqlite state=absent

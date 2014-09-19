@@ -1,0 +1,11 @@
+---
+
+- name: Sync nova db
+  shell: nova-manage db sync
+  sudo: yes
+  sudo_user: nova
+  notify:
+    - Restart nova conductor
+
+- name: Restart nova conductor
+  service: name=nova-conductor state=restarted

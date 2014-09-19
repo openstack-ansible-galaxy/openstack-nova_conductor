@@ -1,0 +1,36 @@
+---
+
+- name: Create nova db
+  mysql_db: name="{{ item }}"
+            state=present
+            login_host="{{ mysql_hostname }}"
+            login_user="{{ mysql_admin_username }}"
+            login_password="{{ mysql_rootpass }}"
+  with_items:
+    - nova
+  notify:
+    - Sync nova db
+    - Restart nova conductor
+
+- name: Create nova db user
+  mysql_user: name="{{ item.name }}"
+              host="{{ item.host }}"
+              password="{{ item.password }}"
+              priv="{{ item.privs }}"
+              state=present
+              login_host="{{ mysql_hostname }}"
+              login_user="{{ mysql_admin_username }}"
+              login_password="{{ mysql_rootpass }}"
+              append_privs=yes
+  with_items:
+    - name:     nova
+      host:     localhost
+      password: "{{ nova_conductor_dbpass }}"
+      privs:    nova.*:ALL
+    - name:     nova
+      host:     "{{ nova_conductor_hostname }}"
+      password: "{{ nova_conductor_dbpass }}"
+      privs:    nova.*:ALL
+  notify:
+    - Sync nova db
+    - Restart nova conductor

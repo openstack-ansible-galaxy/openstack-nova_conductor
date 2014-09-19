@@ -1,0 +1,25 @@
+---
+
+- name: Configure nova conductor
+  ini_file: dest=/etc/nova/nova.conf
+            section="{{ item.section }}"
+            option="{{ item.option }}"
+            value="{{ item.value }}"
+  with_items:
+    - section:  database
+      option:   connection
+      value:    "mysql://nova:{{ nova_conductor_dbpass }}@{{ mysql_hostname }}/nova"
+    - section:  DEFAULT
+      option:   rpc_backend
+      value:    rabbit
+    - section:  DEFAULT
+      option:   rabbit_host
+      value:    "{{ rabbit_hostname }}"
+    - section:  DEFAULT
+      option:   rabbit_userid
+      value:    "{{ rabbit_username }}"
+    - section:  DEFAULT
+      option:   rabbit_password
+      value:    "{{ rabbit_pass }}"
+  notify:
+    - Restart nova conductor
