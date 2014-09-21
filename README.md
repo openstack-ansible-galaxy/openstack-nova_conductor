@@ -8,37 +8,37 @@ _Tested on Ubuntu Precise (12.04) and Trusty (14.04)_
 Requirements
 ------------
 
-A MySQL server. See `mysql_hostname`, `mysql_admin_username` and
-`mysql_rootpass` below.
+A MySQL server. See below.
 
-A RabbitMQ server. See `rabbit_hostname`, `rabbit_username` and
-`rabbit_pass` below.
+A RabbitMQ server. See below.
 
 Role Variables
 --------------
+### Nova conductor (set by this role)
 
-# Other systems/services
-* `rabbit_hostname`:  Hostname/IP address where the RabbitMQ service runs.
-                      Defaults to "localhost".
-* `rabbit_username`:  RabbitMQ username for nova conductor.
-                      It must already exist.
-                      Defaults to "rabbit\_username\_default".
-* `rabbit_pass`:      RabbitMQ password for nova conductor.
-                      Defaults to "rabbit\_pass\_default".
+| Name | Default value | Description | Note |
+|---  |---  |---  |--- |
+| `my_ip` | `{{ ansible_eth0.ipv4.address }}` | Management IP for nova-conductor |
+| `nova_conductor_hostname` | `localhost` | Hostname/IP address where this role runs ||
+| `nova_conductor_dbpass` | `nova_pass_default` |  Desired nova conductor user password for the nova database ||
 
-* `mysql_hostname`:       MySQL server address. Defaults to "localhost".
-* `mysql_admin_username`: MySQL admin username. Defaults to "root".
-* `mysql_rootpass`:       MySQL admin password. Defaults to "mysql\_root\_default".
+### MySQL (must exist)
 
-# Role specific
-* `nova_conductor_hostname`:
-                      Hostname/IP address where this role runs.
-                      It will be used to set keystone endpoints.
-                      Defaults to first interface IP address (eth0).
+| Name | Default value | Description | Note |
+|---  |---  |---  |--- |
+| `mysql_admin_username` | `root` | MySQL admin username ||
+| `mysql_hostname` | `localhost` | MySQL server address ||
+| `mysql_rootpass` | `mysql_root_default` | MySQL admin password ||
 
-* `nova_conductor_dbpass`:
-                      Desired nova conductor user password for the nova
-                      database. Defaults to "nova\_conductor\_dbpass\_default".
+
+### RabbitMQ (must exist)
+
+| Name | Default value | Description | Note |
+|---  |---  |---  |--- |
+| `rabbit_hostname` | `localhost` | Hostname/IP address where the RabbitMQ service runs ||
+| `rabbit_username` | `rabbit_username_default` | RabbitMQ username for glance ||
+| `rabbit_pass` | `rabbit_pass_default` | RabbitMQ password for glance. ||
+
 
 Dependencies
 ------------
