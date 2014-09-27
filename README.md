@@ -51,10 +51,10 @@ Example Playbook
     - hosts: conductor001
       roles:
         - role: openstack-nova_conductor
-            mysql_rootpass: "{{ MYSQL_ROOT }}"
-            rabbit_username: "openstack-nova"
-            rabbit_pass: "{{ RABBIT_NOVA_PASS }}"
-            nova_conductor_dbpass: "{{ NOVA_DBPASS }}"
+          mysql_rootpass: "{{ MYSQL_ROOT }}"
+          rabbit_username: "openstack-nova"
+          rabbit_pass: "{{ RABBIT_NOVA_PASS }}"
+          nova_conductor_dbpass: "{{ NOVA_DBPASS }}"
 
 License
 -------
