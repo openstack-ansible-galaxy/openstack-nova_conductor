@@ -56,6 +56,13 @@ Example Playbook
           rabbit_pass: "{{ RABBIT_NOVA_PASS }}"
           nova_conductor_dbpass: "{{ NOVA_DBPASS }}"
 
+---
+
+A complete Ansible playbook demo, which uses this role, is available here: <https://github.com/dguerri/vagrant-ansible-openstack>
+
+---
+
+
 License
 -------
 
