@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-- name: Configure nova conductor
+- name: Configure Nova Conductor
   ini_file: dest=/etc/nova/nova.conf
             section="{{ item.section }}"
             option="{{ item.option }}"
@@ -26,9 +26,6 @@
     - section:  DEFAULT
       option:   my_ip
       value:    "{{ my_ip }}"
-    - section:  database
-      option:   connection
-      value:    "mysql://nova:{{ nova_conductor_dbpass }}@{{ mysql_hostname }}/nova"
     - section:  DEFAULT
       option:   rpc_backend
       value:    rabbit
@@ -42,4 +39,13 @@
       option:   rabbit_password
       value:    "{{ rabbit_pass }}"
   notify:
-    - Restart nova conductor
+    - Reload Nova Conductor
+
+- name: Configure Nova Conductor database
+  ini_file: dest=/etc/nova/nova.conf
+            section=database
+            option=connection
+            value="{{ nova_conductor_database_url }}"
+  notify:
+    - Sync Nova Conductor db
+    - Restart Nova Conductor

@@ -20,9 +20,9 @@
 - meta: flush_handlers
 
 - include: packages.yml
-- include: database.yml
 - include: configuration.yml
 
 - meta: flush_handlers
 
-- include: maintenance.yml
+- name: Make sure Nova Conductor is started
+  service: name=nova-conductor state=started

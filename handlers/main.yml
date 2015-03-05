@@ -17,12 +17,18 @@
 # limitations under the License.
 #
 
-- name: Sync nova db
+- name: Reload Nova Conductor
+  service: name=nova-conductor state=reloaded
+
+- name: Restart Nova Conductor
+  service: name=nova-conductor state=restarted
+
+- name: Start Nova Conductor
+  service: name=nova-conductor state=started
+
+- name: Sync Nova Conductor db
   shell: nova-manage db sync
   sudo: yes
   sudo_user: nova
   notify:
-    - Restart nova conductor
-
-- name: Restart nova conductor
-  service: name=nova-conductor state=restarted
+    - Restart Nova Conductor
