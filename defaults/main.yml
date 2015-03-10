@@ -17,17 +17,11 @@
 # limitations under the License.
 #
 
-# Common
+# Common - Nova
 my_ip: "{{ ansible_eth0.ipv4.address }}"
 
-# Nova
-nova_conductor_dbpass: nova_conductor_dbpass_default
-nova_conductor_hostname: "{{ ansible_eth0.ipv4.address }}"
-
-# MySQL
-mysql_admin_username: root
-mysql_hostname: localhost
-mysql_rootpass: mysql_root_default
+# Database
+nova_conductor_database_url: sqlite:////var/lib/nova/nova.sqlite
 
 # RabbitMQ
 rabbit_hostname: localhost

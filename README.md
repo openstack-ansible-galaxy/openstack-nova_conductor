@@ -1,6 +1,11 @@
 Nova conductor
 =========
 
+**Status**
+* [![Build Status](https://travis-ci.org/dguerri/openstack-nova_conductor.svg?branch=master)](https://travis-ci.org/dguerri/openstack-nova_conductor) on master branch
+* [![Build Status](https://travis-ci.org/dguerri/openstack-nova_conductor.svg?branch=development)](https://travis-ci.org/dguerri/openstack-nova_conductor) on development branch
+* [![Ansible Galaxy](http://img.shields.io/badge/dguerri-openstack--nova_conductor-blue.svg)](https://galaxy.ansible.com/list#/roles/1772) on Ansible Galaxy
+
 OpenStack Nova conductor service installation
 
 _Tested on Ubuntu Precise (12.04) and Trusty (14.04)_
@@ -18,26 +23,11 @@ Role Variables
 
 | Name | Default value | Description | Note |
 |---  |---  |---  |--- |
+| `nova_conductor_database_url` | `sqlite:////var/lib/nova/nova.sqlite` | Database URI ||
 | `my_ip` | `{{ ansible_eth0.ipv4.address }}` | Management IP for nova-conductor |
-| `nova_conductor_hostname` | `localhost` | Hostname/IP address where this role runs ||
-| `nova_conductor_dbpass` | `nova_pass_default` |  Desired nova conductor user password for the nova database ||
-
-### MySQL (must exist)
-
-| Name | Default value | Description | Note |
-|---  |---  |---  |--- |
-| `mysql_admin_username` | `root` | MySQL admin username ||
-| `mysql_hostname` | `localhost` | MySQL server address ||
-| `mysql_rootpass` | `mysql_root_default` | MySQL admin password ||
-
-
-### RabbitMQ (must exist)
-
-| Name | Default value | Description | Note |
-|---  |---  |---  |--- |
 | `rabbit_hostname` | `localhost` | Hostname/IP address where the RabbitMQ service runs ||
-| `rabbit_username` | `rabbit_username_default` | RabbitMQ username for glance ||
-| `rabbit_pass` | `rabbit_pass_default` | RabbitMQ password for glance. ||
+| `rabbit_username` | `rabbit_username_default` | RabbitMQ username for Nova conductor ||
+| `rabbit_pass` | `rabbit_pass_default` | RabbitMQ password for Nova conductor. ||
 
 
 Dependencies
@@ -51,10 +41,8 @@ Example Playbook
     - hosts: conductor001
       roles:
         - role: openstack-nova_conductor
-          mysql_rootpass: "{{ MYSQL_ROOT }}"
           rabbit_username: "openstack-nova"
           rabbit_pass: "{{ RABBIT_NOVA_PASS }}"
-          nova_conductor_dbpass: "{{ NOVA_DBPASS }}"
 
 ---
 

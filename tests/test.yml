@@ -1,0 +1,13 @@
+---
+
+- hosts: localhost
+  remote_user: root
+  roles:
+
+    - role: openstack-nova_conductor
+      keystone_hostname: "127.0.0.1"
+      rabbit_hostname: "127.0.0.1"
+      rabbit_username: "guest"
+      rabbit_pass: "guest"
+      tags:
+        - nova-conductor
