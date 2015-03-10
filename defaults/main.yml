@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-# Common
+# Common - Nova
 my_ip: "{{ ansible_eth0.ipv4.address }}"
 
 # Database

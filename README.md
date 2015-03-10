@@ -1,6 +1,11 @@
 Nova conductor
 =========
 
+**Status**
+* [![Build Status](https://travis-ci.org/dguerri/openstack-nova_conductor.svg?branch=master)](https://travis-ci.org/dguerri/openstack-nova_conductor) on master branch
+* [![Build Status](https://travis-ci.org/dguerri/openstack-nova_conductor.svg?branch=development)](https://travis-ci.org/dguerri/openstack-nova_conductor) on development branch
+* [![Ansible Galaxy](http://img.shields.io/badge/dguerri-openstack--nova_conductor-blue.svg)](https://galaxy.ansible.com/list#/roles/1772) on Ansible Galaxy
+
 OpenStack Nova conductor service installation
 
 _Tested on Ubuntu Precise (12.04) and Trusty (14.04)_
