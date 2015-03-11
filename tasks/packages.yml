@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-- name: Install nova conductor
+- name: Install Nova Conductor
   apt: name="{{ item }}" state=present
   with_items:
     - nova-conductor
