@@ -18,13 +18,13 @@
 #
 
 - name: Reload Nova Conductor
-  service: name=nova-conductor state=reloaded
+  service: name={{ nova_conductor_service }}  state=reloaded
 
 - name: Restart Nova Conductor
-  service: name=nova-conductor state=restarted
+  service: name={{ nova_conductor_service }}  state=restarted
 
 - name: Start Nova Conductor
-  service: name=nova-conductor state=started
+  service: name={{ nova_conductor_service }}  state=started
 
 - name: Sync Nova Conductor db
   shell: nova-manage db sync
