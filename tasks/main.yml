@@ -19,10 +19,11 @@
 
 - meta: flush_handlers
 
+- include: facts.yml
 - include: packages.yml
 - include: configuration.yml
 
 - meta: flush_handlers
 
 - name: Make sure Nova Conductor is started
-  service: name=nova-conductor state=started
+  service: name={{ nova_conductor_service }}  state=started
