@@ -25,19 +25,19 @@
   with_items:
     - section:  DEFAULT
       option:   my_ip
-      value:    "{{ my_ip }}"
+      value:    "{{ nova_conductor_my_ip }}"
     - section:  DEFAULT
       option:   rpc_backend
       value:    rabbit
     - section:  DEFAULT
       option:   rabbit_host
-      value:    "{{ rabbit_hostname }}"
+      value:    "{{ nova_conductor_rabbit_hostname }}"
     - section:  DEFAULT
       option:   rabbit_userid
-      value:    "{{ rabbit_username }}"
+      value:    "{{ nova_conductor_rabbit_username }}"
     - section:  DEFAULT
       option:   rabbit_password
-      value:    "{{ rabbit_pass }}"
+      value:    "{{ nova_conductor_rabbit_pass }}"
   notify:
     - Reload Nova Conductor
 

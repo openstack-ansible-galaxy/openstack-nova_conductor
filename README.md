@@ -26,10 +26,10 @@ Role Variables
 | Name | Default value | Description | Note |
 |---  |---  |---  |--- |
 | `nova_conductor_database_url` | `sqlite:////var/lib/nova/nova.sqlite` | Database URI ||
-| `my_ip` | `{{ ansible_eth0.ipv4.address }}` | Management IP for nova-conductor |
-| `rabbit_hostname` | `localhost` | Hostname/IP address where the RabbitMQ service runs ||
-| `rabbit_username` | `rabbit_username_default` | RabbitMQ username for Nova conductor ||
-| `rabbit_pass` | `rabbit_pass_default` | RabbitMQ password for Nova conductor. ||
+| `nova_conductor_my_ip` | `{{ ansible_eth0.ipv4.address }}` | Management IP for nova-conductor |
+| `nova_conductor_rabbit_hostname` | `localhost` | Hostname/IP address where the RabbitMQ service runs ||
+| `nova_conductor_rabbit_username` | `rabbit_username_default` | RabbitMQ username for Nova conductor ||
+| `nova_conductor_rabbit_pass` | `rabbit_pass_default` | RabbitMQ password for Nova conductor. ||
 
 
 Dependencies
@@ -43,8 +43,8 @@ Example Playbook
     - hosts: conductor001
       roles:
         - role: openstack-nova_conductor
-          rabbit_username: "openstack-nova"
-          rabbit_pass: "{{ RABBIT_NOVA_PASS }}"
+          nova_conductor_rabbit_username: "openstack-nova"
+          nova_conductor_rabbit_pass: "{{ RABBIT_NOVA_PASS }}"
 
 ---
 

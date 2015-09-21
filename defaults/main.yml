@@ -18,12 +18,12 @@
 #
 
 # Common - Nova
-my_ip: "{{ ansible_eth0.ipv4.address }}"
+nova_conductor_my_ip: "{{ ansible_eth0.ipv4.address }}"
 
 # Database
 nova_conductor_database_url: sqlite:////var/lib/nova/nova.sqlite
 
 # RabbitMQ
-rabbit_hostname: localhost
-rabbit_username: rabbit_username_default
-rabbit_pass: rabbit_pass_default
+nova_conductor_rabbit_hostname: localhost
+nova_conductor_rabbit_username: rabbit_username_default
+nova_conductor_rabbit_pass: rabbit_pass_default
