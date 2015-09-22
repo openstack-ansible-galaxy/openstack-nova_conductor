@@ -27,3 +27,6 @@ nova_conductor_database_url: sqlite:////var/lib/nova/nova.sqlite
 nova_conductor_rabbit_hostname: localhost
 nova_conductor_rabbit_username: rabbit_username_default
 nova_conductor_rabbit_pass: rabbit_pass_default
+
+# Misc
+nova_conductor_bootstrap: true

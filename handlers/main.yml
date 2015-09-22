@@ -27,8 +27,9 @@
   service: name={{ nova_conductor_service }}  state=started
 
 - name: Sync Nova Conductor db
-  shell: nova-manage db sync
+  nova_manage: action=db_sync
   sudo: yes
   sudo_user: nova
   notify:
     - Restart Nova Conductor
+  when: nova_conductor_bootstrap
