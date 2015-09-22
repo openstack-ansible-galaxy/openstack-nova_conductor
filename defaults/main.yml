@@ -24,9 +24,14 @@ nova_conductor_my_ip: "{{ ansible_eth0.ipv4.address }}"
 nova_conductor_database_url: sqlite:////var/lib/nova/nova.sqlite
 
 # RabbitMQ
-nova_conductor_rabbit_hostname: localhost
-nova_conductor_rabbit_username: rabbit_username_default
-nova_conductor_rabbit_pass: rabbit_pass_default
+nova_conductor_rabbit_userid: rabbit_pass_default
+nova_conductor_rabbit_password: rabbit_username_default
+nova_conductor_rabbit_virtual_host: /
+nova_conductor_rabbit_retry_interval: 1
+nova_conductor_rabbit_host: localhost
+nova_conductor_rabbit_port: 5672
+nova_conductor_rabbit_hosts: "{{ nova_conductor_rabbit_host }}:{{ nova_conductor_rabbit_port }}"
+nova_conductor_rabbit_ha_queues: False
 
 # Misc
 nova_conductor_bootstrap: true
