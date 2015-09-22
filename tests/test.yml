@@ -6,8 +6,8 @@
 
     - role: openstack-nova_conductor
       keystone_hostname: "127.0.0.1"
-      rabbit_hostname: "127.0.0.1"
-      rabbit_username: "guest"
-      rabbit_pass: "guest"
+      nova_conductor_rabbit_host: "127.0.0.1"
+      nova_conductor_rabbit_userid: "guest"
+      nova_conductor_rabbit_password: "guest"
       tags:
         - nova-conductor

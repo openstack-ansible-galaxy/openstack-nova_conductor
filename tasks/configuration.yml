@@ -29,15 +29,31 @@
     - section:  DEFAULT
       option:   rpc_backend
       value:    rabbit
-    - section:  DEFAULT
-      option:   rabbit_host
-      value:    "{{ nova_conductor_rabbit_hostname }}"
-    - section:  DEFAULT
-      option:   rabbit_userid
-      value:    "{{ nova_conductor_rabbit_username }}"
-    - section:  DEFAULT
-      option:   rabbit_password
-      value:    "{{ nova_conductor_rabbit_pass }}"
+    # RabbitMQ
+    - section: DEFAULT
+      option:  rabbit_userid
+      value:   "{{ nova_conductor_rabbit_userid }}"
+    - section: DEFAULT
+      option:  rabbit_password
+      value:   "{{ nova_conductor_rabbit_password }}"
+    - section: DEFAULT
+      option:  rabbit_virtual_host
+      value:   "{{ nova_conductor_rabbit_virtual_host }}"
+    - section: DEFAULT
+      option:  rabbit_retry_interval
+      value:   "{{ nova_conductor_rabbit_retry_interval }}"
+    - section: DEFAULT
+      option:  rabbit_host
+      value:   "{{ nova_conductor_rabbit_host }}"
+    - section: DEFAULT
+      option:  rabbit_port
+      value:   "{{ nova_conductor_rabbit_port }}"
+    - section: DEFAULT
+      option:  rabbit_hosts
+      value:   "{{ nova_conductor_rabbit_hosts }}"
+    - section: DEFAULT
+      option:  rabbit_ha_queues
+      value:   "{{ nova_conductor_rabbit_ha_queues }}"
   notify:
     - Reload Nova Conductor
 
