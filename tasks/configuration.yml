@@ -55,7 +55,7 @@
       option:   rabbit_ha_queues
       value:    "{{ nova_conductor_rabbit_ha_queues }}"
   notify:
-    - Reload Nova Conductor
+    - Restart Nova Conductor
 
 - name: Configure Nova Conductor database
   ini_file: dest=/etc/nova/nova.conf
