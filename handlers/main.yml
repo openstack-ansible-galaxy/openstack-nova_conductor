@@ -17,14 +17,8 @@
 # limitations under the License.
 #
 
-- name: Reload Nova Conductor
-  service: name={{ nova_conductor_service }}  state=reloaded
-
 - name: Restart Nova Conductor
   service: name={{ nova_conductor_service }}  state=restarted
-
-- name: Start Nova Conductor
-  service: name={{ nova_conductor_service }}  state=started
 
 - name: Sync Nova Conductor db
   nova_manage: action=db_sync
@@ -32,4 +26,4 @@
   sudo_user: nova
   notify:
     - Restart Nova Conductor
-  when: nova_conductor_bootstrap
+  when: nova_conductor_bootstrap and nova_conductor_db_migrate

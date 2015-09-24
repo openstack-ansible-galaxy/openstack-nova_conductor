@@ -35,3 +35,4 @@ nova_conductor_rabbit_ha_queues: False
 
 # Misc
 nova_conductor_bootstrap: true
+nova_conductor_db_migrate: true
