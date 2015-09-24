@@ -26,4 +26,4 @@
   sudo_user: nova
   notify:
     - Restart Nova Conductor
-  when: nova_conductor_bootstrap and nova_conductor_db_migrate
+  when: nova_conductor_bootstrap
