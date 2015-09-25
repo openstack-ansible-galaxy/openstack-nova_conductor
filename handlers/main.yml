@@ -18,7 +18,7 @@
 #
 
 - name: Restart Nova Conductor
-  service: name={{ nova_conductor_service }}  state=restarted
+  service: name={{ nova_conductor_service }}  state=restarted enabled=yes
 
 - name: Sync Nova Conductor db
   nova_manage: action=db_sync
